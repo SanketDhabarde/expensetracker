@@ -1,0 +1,40 @@
+<%-include("partials/header")%>
+
+<div class="container">
+    <div id="app">
+        <h1>expense tracker</h1>
+    <% transections.forEach(function(trans){ %>
+        <p>your balance</p>
+        <p><strong>Rs. <%=trans.amount%></strong></p>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Income</h5>
+              <% if(trans.text == 'payment'){ %>
+                <p class="card-text">Rs. <%= trans.amount%></p>
+             <% } %>
+              
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Expense</h5>
+              <p class="card-text">Rs. 0</p>
+            </div>
+        </div>
+     
+        <div>
+            <h4>History</h4>
+                <div>
+                    <p><strong><%= trans.text%> </strong>- <%= trans.amount %></p><a href=""><i class="far fa-edit"></i></a>
+                    <a href=""><i class="fas fa-trash-alt"></i></a>
+                </div>
+        </div>
+    
+    <% }) %> 
+
+        <a class="btn btn-primary" href="/transections/new">Add new transection</a>
+    </div>
+</div>
+
+
+<%-include("partials/footer")%>
