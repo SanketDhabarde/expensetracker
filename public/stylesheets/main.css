@@ -1,3 +1,14 @@
 #app{
     margin: 3rem auto;
+    position: center;
+    padding: 3rem;
+}
+
+#deleteForm{
+    display: inline;
+}
+
+#balance{
+    font-size: 2rem;
+    font-weight: 100;
 }

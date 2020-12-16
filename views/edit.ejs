@@ -1,16 +1,15 @@
 <%- include("partials/header")%>
-
 <div class="container">
     <div style="width: 30%; margin: 3rem auto;" class="row">
-        <h4>Add a new Expense</h4>
-        <form action="/transections" method="POST">
+        <h4>Edit expense</h4>
+        <form action="/transections/<%= transection._id %>?_method=PUT" method="POST">
             <div class="form-group">
               <label for="text">Expense</label>
-              <input type="text" class="form-control" name="text" id="text" placeholder="Text..">
+              <input type="text" class="form-control" name="text" id="text" value="<%= transection.text %>">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Amount</label>
-              <input type="text" class="form-control" name="amount" id="amount" placeholder="amount">
+              <input type="text" class="form-control" name="amount" id="amount" value="<%= transection.amount %>">
               <small id="emailHelp" class="form-text text-muted">(positive- payment , negative-expense)</small>
             </div>
             <div class="form-group">

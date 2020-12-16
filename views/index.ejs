@@ -1,38 +1,43 @@
 <%-include("partials/header")%>
 
 <div class="container">
-    <div id="app">
-        <h1>expense tracker</h1>
-    <% transections.forEach(function(trans){ %>
-        <p>your balance</p>
-        <p><strong>Rs. <%=trans.amount%></strong></p>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Income</h5>
-              <% if(trans.text == 'payment'){ %>
-                <p class="card-text">Rs. <%= trans.amount%></p>
-             <% } %>
-              
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Expense</h5>
-              <p class="card-text">Rs. 0</p>
-            </div>
-        </div>
-     
-        <div>
-            <h4>History</h4>
-                <div>
-                    <p><strong><%= trans.text%> </strong>- <%= trans.amount %></p><a href=""><i class="far fa-edit"></i></a>
-                    <a href=""><i class="fas fa-trash-alt"></i></a>
+    <div>
+        <h2 class="mb-2">Expense Tracker</h2>
+        <%var total=0, income=0, expense=0;  %>
+        <% transection.forEach(function(trans){ %>
+           <% total+=trans.amount; %>
+           <%if(trans.amount < 0){ %>
+                <%expense+=trans.amount %>
+            <% }else{ %>
+                <%income+=trans.amount%>
+           <% }%>
+        <% }) %> 
+        <h5>YOUR BALANCE</h5>
+        <p id="balance"><strong>Rs. <%= total%></strong></p>
+            <div class="card" style="width: 12rem;">
+                <div class="card-body alert-success">
+                  <h5 class="card-title">Income</h5>
+                    <p class="card-text">Rs. <%= income %></p>
                 </div>
-        </div>
-    
-    <% }) %> 
-
-        <a class="btn btn-primary" href="/transections/new">Add new transection</a>
+            </div>
+            <div class="card " style="width: 12rem;">
+                <div class="card-body alert-danger">
+                  <h5 class="card-title">Expense</h5>
+                  <p class="card-text">Rs. <%= expense %></p>
+                </div>
+            </div>
+        <a class="btn btn-primary mt-2 mb-2" href="/transections/new">Add new transection</a>
+        <h5>History</h5>
+        <hr>
+        <% transection.forEach(function(trans){ %>
+                <div class="mb-2">
+                    <strong><%= trans.text%> </strong>- <%= trans.amount %>
+                    <a href="/transections/<%= trans._id %>/edit"><i class="far fa-edit"></i></a>
+                    <form id="deleteForm" action="/transections/<%=trans._id%>?_method=DELETE" method="POST">
+                        <button><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </div>
+        <% }) %> 
     </div>
 </div>
 
