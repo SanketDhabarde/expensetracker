@@ -1,0 +1,25 @@
+<%- include("partials/header")%>
+
+<div class="container">
+    <div style="width: 30%; margin: 3rem auto;" class="row">
+        <h3 class="text-center">Login <i class="fas fa-sign-in-alt"></i></h3>
+        <form action="/login" method="POST">
+            <div class="mb-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="username">
+                  </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password"> 
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                    <button type="submit" class="form-control btn btn-primary">login</button>
+                </div>  
+            </div>
+          </form>
+    </div>
+</div>
+<%- include("partials/footer")%>
