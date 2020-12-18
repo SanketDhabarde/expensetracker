@@ -3,7 +3,7 @@
 <div class="container">
     <div style="width: 30%; margin: 3rem auto;" class="row">
         <h4>Add a new Expense</h4>
-        <form action="/transections" method="POST">
+        <form action="/transections/<%= user._id %>" method="POST">
             <div class="form-group">
               <label for="text">Expense</label>
               <input type="text" class="form-control" name="text" id="text" placeholder="Text..">

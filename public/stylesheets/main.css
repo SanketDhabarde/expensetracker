@@ -4,11 +4,27 @@
     padding: 3rem;
 }
 
-#deleteForm{
+#deleteForm, .card-display{
     display: inline;
 }
 
 #balance{
     font-size: 2rem;
     font-weight: 100;
+}
+
+.container-center{
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+.text-right{
+    float: right;
+}
+
+.card-display{
+    border: none;
+}
+img{
+    width: 30rem;
 }
