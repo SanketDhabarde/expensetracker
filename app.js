@@ -6,6 +6,7 @@ var express = require("express"),
     localStrategy = require("passport-local"),
     Transection = require("./models/transection"),
     User = require("./models/user"),
+    flash = require("connect-flash"),
     bodyParser= require("body-parser");
 
 // app config
@@ -13,6 +14,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 // db config
 mongoose.connect("mongodb://localhost:27017/expense_tracker", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false});
@@ -31,6 +33,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
@@ -80,6 +84,7 @@ app.post("/transections/:id", function(req, res){
                     user.transections.push(trans);
                     // save the user
                     user.save();
+                    req.flash("success", "transenction added successfully!")
                     res.redirect("/transections/"+ user._id);
                 }
             });
@@ -108,6 +113,7 @@ app.put("/transections/:id/:trans_id", function(req, res){
         if(err){
             console.log(err);
         }else{
+            req.flash("success", "transection edited successfully!");
             res.redirect("/transections/"+ req.params.id);
         }
     });
@@ -119,13 +125,14 @@ app.delete("/transections/:id/:trans_id", function(req, res){
         if(err){
             res.redirect("/transections/"+ req.params.id);
         }else{
+            req.flash("success", "transection deleted successfully!");
             res.redirect("/transections/"+ req.params.id);
         }
     });
 });
 
 // user dashboard
-app.get("/dashboard", function(req, res){
+app.get("/dashboard",isLoggedIn, function(req, res){
     res.render("dashboard");
 });
 
@@ -144,6 +151,7 @@ app.post("/register", function(req, res){
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
+            req.flash("error", err.message);
             return res.redirect("/register");
         }
         passport.authenticate("local")(req, res, function(){
@@ -167,9 +175,19 @@ app.post("/login", passport.authenticate("local", {
 // logout
 app.get("/logout", function(req, res){
     req.logout();
+    req.flash("success", "successfully logged out!")
     res.redirect("/");
 });
 
+// middleware
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    req.flash("error", "please login first!");
+    res.redirect("/login");
+}
+
 app.listen(4000, function(){
-    console.log("server started...");
+    console.log("server started at port 4000...");
 });

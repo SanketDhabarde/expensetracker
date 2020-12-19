@@ -1,7 +1,5 @@
-#app{
-    margin: 3rem auto;
-    position: center;
-    padding: 3rem;
+*{
+    font-family: 'Roboto', sans-serif;
 }
 
 #deleteForm, .card-display{
@@ -11,6 +9,7 @@
 #balance{
     font-size: 2rem;
     font-weight: 100;
+    font-family: 'Langar', cursive;
 }
 
 .container-center{
@@ -24,7 +23,11 @@
 
 .card-display{
     border: none;
+    width: 12rem;
 }
 img{
     width: 30rem;
+}
+h1, h4{
+    font-family: 'Exo 2', sans-serif;
 }
