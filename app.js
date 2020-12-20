@@ -7,11 +7,13 @@ var express = require("express"),
     Transection = require("./models/transection"),
     User = require("./models/user"),
     flash = require("connect-flash"),
+    dotenv = require("dotenv"),
     bodyParser= require("body-parser");
 
 var transectionRoutes = require("./routes/transection");
 var indexRoutes = require("./routes/index");
 
+require('dotenv').config()
 // app config
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
@@ -20,7 +22,8 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 // db config
-mongoose.connect("mongodb://localhost:27017/expense_tracker", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false});
+// mongoose.connect("mongodb://localhost:27017/expense_tracker", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:false});
 
 
 // passport config
@@ -45,6 +48,6 @@ app.use(transectionRoutes);
 app.use(indexRoutes);
 
 
-app.listen(4000, function(){
-    console.log("server started at port 4000...");
+app.listen(process.env.PORT, function(){
+    console.log("server started...");
 });
