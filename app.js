@@ -48,6 +48,6 @@ app.use(transectionRoutes);
 app.use(indexRoutes);
 
 
-app.listen(process.env.PORT, function(){
+app.listen(process.env.PORT,process.env.IP, function(){
     console.log("server started...");
 });
