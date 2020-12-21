@@ -31,3 +31,8 @@ img{
 h1, h4{
     font-family: 'Exo 2', sans-serif;
 }
+
+#formE{
+    text-align: center;
+    margin: 3rem auto;
+}

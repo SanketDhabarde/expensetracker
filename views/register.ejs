@@ -1,25 +1,27 @@
 <%- include("partials/header")%>
 
 <div class="container">
-    <div style="width: 30%; margin: 3rem auto;" class="row">
-        <h3 class="text-center">Register yourself <i class="fas fa-user-plus"></i></h3>
-        <form action="/register" method="POST">
-            <div class="mb-3">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="username" placeholder="username">
-                  </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="password"> 
+    <div class="row">
+        <div class="col-md-4" id="formE">
+            <h3 class="text-center">Register yourself <i class="fas fa-user-plus"></i></h3>
+            <form action="/register" method="POST">
+                <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="username">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-group">
-                    <button type="submit" class="form-control btn btn-primary">Sign up</button>
-                </div>  
-            </div>
-          </form>
+                <div class="mb-3">
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="password"> 
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary">Sign up</button>
+                    </div>  
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <%- include("partials/footer")%>

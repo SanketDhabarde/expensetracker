@@ -1,6 +1,7 @@
 <%- include("../partials/header")%>
 <div class="container">
-    <div style="width: 30%; margin: 3rem auto;" class="row">
+    <div class="row">
+      <div class="col-md-4" id="formE">
         <h4>Edit expense</h4>
         <form action="/transections/<%= currentUser._id %>/<%=transection._id%>?_method=PUT" method="POST">
             <div class="form-group">
@@ -16,6 +17,7 @@
                 <button type="submit" class="form-control btn btn-primary">Submit</button>
             </div>  
           </form>
+      </div>
     </div>
 </div>
 <%- include("../partials/footer")%>
