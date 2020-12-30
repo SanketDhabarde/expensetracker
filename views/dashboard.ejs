@@ -1,7 +1,11 @@
 <%- include("partials/header")%>
-<div class="container-center">
-    <h1>Welcome <%= currentUser.username %></h1>
-    <img src="images/hero.svg" class="d-block" alt="">
-    <a href="/transections/<%= currentUser._id%>" class="btn btn-primary mt-4">view your transections</a>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4" id="hero">
+            <h1>Welcome <%= currentUser.username %></h1>
+            <img src="images/hero.svg" class="d-block img-thumbnail" alt="">
+            <a href="/transections/<%= currentUser._id%>" class="btn btn-primary mt-4">view your transections</a>
+        </div>
+    </div>
 </div>
 <%- include("partials/footer")%>

@@ -25,9 +25,7 @@
     border: none;
     width: 12rem;
 }
-img{
-    width: 30rem;
-}
+
 h1, h4{
     font-family: 'Exo 2', sans-serif;
 }
@@ -36,3 +34,13 @@ h1, h4{
     text-align: center;
     margin: 3rem auto;
 }
+
+#hero{
+    margin: 3rem auto;
+}
+
+.img-thumbnail{
+    padding: 0;
+    border: none;
+}
+
